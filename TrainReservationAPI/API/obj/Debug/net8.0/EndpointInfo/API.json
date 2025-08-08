@@ -1,0 +1,142 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Tren": {
+      "post": {
+        "tags": [
+          "Tren"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RezervasyonRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RezervasyonRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RezervasyonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RezervasyonResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RezervasyonResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RezervasyonResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RezervasyonRequest": {
+        "type": "object",
+        "properties": {
+          "tren": {
+            "$ref": "#/components/schemas/Tren"
+          },
+          "rezervasyonYapilacakKisiSayisi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kisilerFarkliVagonlaraYerlestirilebilir": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RezervasyonResponse": {
+        "type": "object",
+        "properties": {
+          "rezervasyonYapilabilir": {
+            "type": "boolean"
+          },
+          "yerlesimAyrintilari": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/YerlesimAyrinti"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tren": {
+        "type": "object",
+        "properties": {
+          "ad": {
+            "type": "string",
+            "nullable": true
+          },
+          "vagonlar": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Vagon"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Vagon": {
+        "type": "object",
+        "properties": {
+          "ad": {
+            "type": "string",
+            "nullable": true
+          },
+          "kapasite": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "doluKoltukAdet": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "YerlesimAyrinti": {
+        "type": "object",
+        "properties": {
+          "vagonAdi": {
+            "type": "string",
+            "nullable": true
+          },
+          "kisiSayisi": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

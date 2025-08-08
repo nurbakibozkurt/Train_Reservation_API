@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "API.Controllers.RezervasyonController",
+    "Method": "RezervasyonCheck",
+    "RelativePath": "api/Rezervasyon",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rezervasyonReq",
+        "Type": "API.Models.RezervasyonRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "API.Models.RezervasyonResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
